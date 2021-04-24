@@ -28,7 +28,7 @@ defmodule MnesiaCrud.Thing do
       Thing.read(id)
     end
     |> case do
-         %Thing{} = user -> user
+         %Thing{} = record -> record
          _ -> {:error, :not_found}
        end
   end

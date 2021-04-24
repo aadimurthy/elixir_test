@@ -10,7 +10,7 @@ mix deps.get
 Step: 2
 
 ```
-mix test
+mix test --trace
 ```
 
 To run as standalone you required to initialize mnesia DB and table.

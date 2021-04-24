@@ -2,19 +2,19 @@ defmodule MnesiaCrudThingTest do
   use ExUnit.Case
 
   test "should store a record with given id and value and able to fetch it using id" do
-    MnesiaCrud.Thing.create( "1", "aadi")
-    assert MnesiaCrud.Thing.find( "1") ==  %ThingDB.Thing{id: "1", value: "aadi"}
+    MnesiaCrud.Thing.create( "test-id-1", "test-value-1")
+    assert MnesiaCrud.Thing.find( "test-id-1") ==   %ThingDB.Thing{id: "test-id-1", value: "test-value-1"}
   end
 
   test "should create a record with given value and auto generate id and store it" do
-    user = MnesiaCrud.Thing.create("aadi")
-    assert MnesiaCrud.Thing.find( user.id) == %ThingDB.Thing{id: user.id, value: "aadi"}
+    record = MnesiaCrud.Thing.create("test-value-2")
+    assert MnesiaCrud.Thing.find( record.id) == %ThingDB.Thing{id: record.id, value: "test-value-2"}
   end
 
 
   test "should return a error when record already exists" do
-    exitingRecord = MnesiaCrud.Thing.create("murthy")
-    assert MnesiaCrud.Thing.create(exitingRecord.id, "murthy") == {:error, :alredy_exixts}
+    exitingRecord = MnesiaCrud.Thing.create("test-value-3")
+    assert MnesiaCrud.Thing.create(exitingRecord.id, "test-value") == {:error, :alredy_exixts}
   end
 
   test "should return matching record with given id" do
