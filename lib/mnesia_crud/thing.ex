@@ -14,13 +14,15 @@ defmodule MnesiaCrud.Thing do
   def create(id, value) do
     find(id)
     |> case do
-         %Thing{}  -> {:error, :alredy_exixts}
-         {:error, :not_found} ->
-           Amnesia.transaction do
-             %Thing{id: id, value: value}
-             |> Thing.write()
-           end
-       end
+      %Thing{} ->
+        {:error, :alredy_exixts}
+
+      {:error, :not_found} ->
+        Amnesia.transaction do
+          %Thing{id: id, value: value}
+          |> Thing.write()
+        end
+    end
   end
 
   def find(id) do
@@ -28,8 +30,8 @@ defmodule MnesiaCrud.Thing do
       Thing.read(id)
     end
     |> case do
-         %Thing{} = record -> record
-         _ -> {:error, :not_found}
-       end
+      %Thing{} = record -> record
+      _ -> {:error, :not_found}
+    end
   end
 end

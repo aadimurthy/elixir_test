@@ -23,7 +23,7 @@ defmodule MnesiaCrud.MixProject do
   defp deps do
     [
       {:amnesia, "~> 0.2.8"},
-      { :elixir_uuid, "~> 1.2" }
+      {:elixir_uuid, "~> 1.2"}
     ]
   end
 end
